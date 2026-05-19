@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI 简历筛选</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <div class="logo-icon">✦</div>
+    <div>
+      <h1>AI 简历筛选</h1>
+    </div>
+  </div>
+  <span class="header-badge">Powered by Claude</span>
+</header>
+
+<div class="layout">
+
+  <!-- ── Left panel ── -->
+  <aside class="left-panel">
+    <div class="panel-body">
+
+      <!-- Upload -->
+      <div>
+        <p class="section-label">上传简历</p>
+        <div class="upload-zone" id="uploadZone">
+          <div class="upload-icon">📄</div>
+          <p>点击或拖拽文件到此处</p>
+          <p class="hint">PDF · DOCX · TXT &nbsp;|&nbsp; 可多选批量上传</p>
+        </div>
+        <input type="file" id="fileInput" multiple accept=".pdf,.doc,.docx,.txt" />
+      </div>
+
+      <!-- Resume list -->
+      <div>
+        <p class="section-label">已上传简历 <span id="resumeCount" style="font-weight:400;text-transform:none;letter-spacing:0;color:#64748b"></span></p>
+        <div class="resume-list" id="resumeList">
+          <p class="empty-tip">暂无简历</p>
+        </div>
+      </div>
+
+      <!-- Criteria -->
+      <div>
+        <p class="section-label">筛选条件</p>
+        <div class="criteria-input-row">
+          <input type="text" id="criterionInput" placeholder="输入条件，如：5年以上Python经验" />
+          <button class="add-btn" id="addCriterionBtn" title="添加">+</button>
+        </div>
+        <div class="criteria-list" id="criteriaList">
+          <p class="empty-tip">暂无条件</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="panel-footer">
+      <button id="startBtn" disabled>⚡ 开始筛选</button>
+    </div>
+  </aside>
+
+  <!-- ── Right panel ── -->
+  <main class="right-panel">
+    <div class="right-header">
+      <div class="right-header-top">
+        <h2>筛选结果</h2>
+        <span class="result-count" id="resultCount">0 份简历</span>
+      </div>
+      <div class="progress-wrap" id="progressWrap">
+        <div class="progress-info">
+          <span id="progressLabel">准备中...</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-scroll">
+      <div id="emptyState" class="no-results">
+        <div class="nr-icon">📋</div>
+        <p>上传简历并设置筛选条件后，点击"开始筛选"</p>
+      </div>
+      <div class="results-grid" id="resultsGrid" style="display:none"></div>
+    </div>
+  </main>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
